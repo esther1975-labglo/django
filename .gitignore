@@ -1,4 +1,7 @@
-*__pycache__
+*__pycache__/
 *test.py 
 *school_logos
 *student_img
+test.py
+student_img/
+school_logos/

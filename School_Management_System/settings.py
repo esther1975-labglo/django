@@ -114,7 +114,7 @@ WSGI_APPLICATION = 'School_Management_System.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ASS',
+        'NAME': 'Task',
         'HOST' : 'localhost',
         'PORT' : '3306',
         'USER' : 'root',
