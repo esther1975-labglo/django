@@ -1,7 +1,29 @@
 from rest_framework import viewsets
 from django.shortcuts import render
-from school.models import *
-from school.serializers import *
+from school.models import (
+    User,
+    School,
+    staff,
+    Teacher,
+    Student,
+    Class,
+    StudentAttendance,
+    StaffAttendance,
+    Transport
+)
+from school.serializers import (
+    RegisterSerializer,
+    LoginSerializer,
+    UserSerializer,
+    SchoolSerializer,
+    StaffSerializer,
+    TeacherSerializer,
+    StudentSerializer,
+    ClassSerializer,
+    TransportSerializer,
+    StaffAttendanceSerializer,
+    StudentAttendanceSerializer
+)
 from rest_framework import permissions
 from rest_framework import generics
 from rest_framework.authtoken.models import Token
@@ -54,6 +76,10 @@ class TeacherViewSet(viewsets.ModelViewSet):
 class StudentViewSet(viewsets.ModelViewSet):
     serializer_class = StudentSerializer
     queryset = Student.objects.all()
+
+class ClassViewSet(viewsets.ModelViewSet):
+    queryset = Class.objects.all()
+    serializer_class = ClassSerializer    
 
 class TransportViewSet(viewsets.ModelViewSet):
     serializer_class = TransportSerializer

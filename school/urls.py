@@ -7,6 +7,7 @@ from .views import (
     StaffViewSet,
     TeacherViewSet,
     StudentViewSet,
+    ClassViewSet,
     TransportViewSet,
     StudentAttendanceViewSet,
     StaffAttendanceViewSet, 
@@ -19,6 +20,7 @@ router.register(r'school', SchoolViewSet)
 router.register(r'staffs', StaffViewSet)
 router.register(r'teachers', TeacherViewSet)
 router.register(r'students', StudentViewSet)
+router.register(r'classes', ClassViewSet)
 router.register(r'transport', TransportViewSet)
 router.register(r'StudentAttendance', StudentAttendanceViewSet)
 router.register(r'StaffAttendance', StaffAttendanceViewSet)
