@@ -25,12 +25,18 @@ class Timestamp(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
 
 
+class Review(models.Model):
+    user = models.ForeignKey(User, related_name = 'feedback', on_delete = models.CASCADE, blank = True, null = True)
+    feedback = models.TextField(null = True)
+
+
 class School(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE, blank = True, null = True)
     name = models.CharField(max_length = 200)
     district = models.CharField(max_length = 200)
     code = models.CharField(max_length = 20)
     logo = models.ImageField(default = 'default.jpg', upload_to='school_logos')
+    feedback = models.ForeignKey(Review, on_delete = models.CASCADE, blank = True, null = True)
 
 
 class staff(models.Model):
@@ -93,3 +99,5 @@ class Transport(models.Model):
     pickup_location = models.CharField(max_length = 50)
     drop_location = models.CharField(max_length = 50)
     fees = models.IntegerField(null = True)
+
+

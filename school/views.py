@@ -9,7 +9,8 @@ from school.models import (
     Class,
     StudentAttendance,
     StaffAttendance,
-    Transport
+    Transport,
+    Review
 )
 from school.serializers import (
     RegisterSerializer,
@@ -22,7 +23,8 @@ from school.serializers import (
     ClassSerializer,
     TransportSerializer,
     StaffAttendanceSerializer,
-    StudentAttendanceSerializer
+    StudentAttendanceSerializer,
+    ReviewSerializer
 )
 from rest_framework import permissions
 from rest_framework import generics
@@ -112,3 +114,9 @@ class StudentAttendanceViewSet(viewsets.ModelViewSet):
 class StaffAttendanceViewSet(viewsets.ModelViewSet):
     serializer_class = StaffAttendanceSerializer
     queryset = StaffAttendance.objects.all()
+
+'''review'''
+
+class ReviewViewSet(viewsets.ModelViewSet):
+    serializer_class = ReviewSerializer
+    queryset = Review.objects.all()

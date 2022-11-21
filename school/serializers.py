@@ -10,7 +10,8 @@ from school.models import (
     Class,
     StudentAttendance,
     StaffAttendance,
-    Transport
+    Transport,
+    Review
 )
 from django.contrib.auth import authenticate
 
@@ -66,7 +67,7 @@ class UserSerializer(serializers.ModelSerializer):
 class SchoolSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = School
-        fields = ('url', 'name', 'user', 'district', 'code')
+        fields = ('url', 'name', 'user', 'district', 'code', 'feedback')
 
 class StaffSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -82,7 +83,7 @@ class TeacherSerializer(serializers.HyperlinkedModelSerializer):
 class StudentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Student
-        fields = ('url', 'name', 'user', 'gender', 'photo', 'DOB', 'std', 'mobile_no', 'email_id', 'address')
+        fields = ('url', 'name', 'user', 'gender', 'photo', 'DOB', 'standard', 'mobile_no', 'email_id', 'address')
 
 
 class ClassSerializer(serializers.ModelSerializer):
@@ -105,5 +106,8 @@ class StudentAttendanceSerializer(serializers.HyperlinkedModelSerializer):
         model = StudentAttendance
         fields = ('url', 'student', 'attendance')
 
-
+class ReviewSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Review
+        fields = ('url', 'user', 'feedback')
 

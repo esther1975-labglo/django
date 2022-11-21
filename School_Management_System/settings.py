@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
-    
+
     
 ]
 
@@ -64,7 +64,6 @@ REST_FRAMEWORK = {
     [
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-       
         'rest_framework.authentication.TokenAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
@@ -119,7 +118,8 @@ DATABASES = {
         'HOST' : 'localhost',
         'PORT' : '3306',
         'USER' : 'root',
-        'PASSWORD' : 'password'
+        'PASSWORD' : 'password',
+        'OPTIONS' : {'charset' : 'utf8mb4'},
     }
     
     
