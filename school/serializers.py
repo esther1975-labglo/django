@@ -1,7 +1,17 @@
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User, Group
-from school.models import *
+from school.models import (
+    User,
+    School,
+    staff,
+    Teacher,
+    Student,
+    Class,
+    StudentAttendance,
+    StaffAttendance,
+    Transport
+)
 from django.contrib.auth import authenticate
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -73,6 +83,12 @@ class StudentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Student
         fields = ('url', 'name', 'user', 'gender', 'photo', 'DOB', 'std', 'mobile_no', 'email_id', 'address')
+
+
+class ClassSerializer(serializers.ModelSerializer):
+    class Meta : 
+        model = Class
+        fields = "__all__"
 
 class TransportSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
