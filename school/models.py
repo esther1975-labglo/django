@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 GENDER_CHOICES = (
-        ('M', 'male'),
+        ('M', 'Male'),
         ('F', 'Female'),
     )
 
@@ -68,6 +68,7 @@ class Student(models.Model):
     photo = models.ImageField(default = 'default.jpg', null = True, upload_to = 'student_img')
     gender = models.CharField(max_length = 1, null = True, choices = GENDER_CHOICES)
     DOB = models.DateField(null = True)
+    standard = models.CharField(max_length = 50, null = True)
     student_class = models.ForeignKey(Class, on_delete=models.CASCADE, blank = True, null = True)
     mobile_no = models.IntegerField(null = True, default=2022)
     email_id = models.EmailField(max_length = 254, default = "a@gmail.com", null = True)

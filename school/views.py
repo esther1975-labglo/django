@@ -33,6 +33,8 @@ from rest_framework import views
 from django.contrib.auth import login
 from rest_framework.authentication import TokenAuthentication
 
+'''user registeration'''
+
 class RegisterAPI(generics.GenericAPIView):
     serializer_class = RegisterSerializer
 
@@ -46,10 +48,12 @@ class RegisterAPI(generics.GenericAPIView):
         "user": UserSerializer(user, context=self.get_serializer_context()).data,
         }, status=status.HTTP_200_OK)
 
+'''user login'''
+
 class LoginView(views.APIView):
-    
     permission_classes = (permissions.AllowAny,)
     authentication_classes = (TokenAuthentication,)
+
     def post(self, request, format=None):
         serializer = LoginSerializer(data=self.request.data)
         serializer.is_valid(raise_exception=True)
@@ -57,33 +61,49 @@ class LoginView(views.APIView):
         login(request, user)
         return Response(None, status=status.HTTP_200_OK)
 
+'''user CRUD operation'''
+
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
+
+'''school CRUD operation'''
 
 class SchoolViewSet(viewsets.ModelViewSet):
     serializer_class = SchoolSerializer
     queryset = School.objects.all()
 
+'''staff CRUD operation'''
+
 class StaffViewSet(viewsets.ModelViewSet):
     serializer_class = StaffSerializer
     queryset = staff.objects.all()
+
+'''teachers CRUD operation'''
 
 class TeacherViewSet(viewsets.ModelViewSet):
     serializer_class = TeacherSerializer
     queryset = Teacher.objects.all()
 
+'''students CRUD operation'''
+
 class StudentViewSet(viewsets.ModelViewSet):
     serializer_class = StudentSerializer
     queryset = Student.objects.all()
+
+'''student classes CRUD operation'''
 
 class ClassViewSet(viewsets.ModelViewSet):
     queryset = Class.objects.all()
     serializer_class = ClassSerializer    
 
+'''transport CRUD operation'''
+
 class TransportViewSet(viewsets.ModelViewSet):
     serializer_class = TransportSerializer
     queryset = Transport.objects.all()
+
+'''attendance CRUD operation'''
 
 class StudentAttendanceViewSet(viewsets.ModelViewSet):
     serializer_class = StudentAttendanceSerializer
