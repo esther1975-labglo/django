@@ -11,7 +11,8 @@ from .views import (
     TransportViewSet,
     StudentAttendanceViewSet,
     StaffAttendanceViewSet, 
-    RegisterAPI
+    RegisterAPI,
+    ReviewViewSet
 )
 
 router = DefaultRouter()
@@ -24,7 +25,7 @@ router.register(r'classes', ClassViewSet)
 router.register(r'transport', TransportViewSet)
 router.register(r'StudentAttendance', StudentAttendanceViewSet)
 router.register(r'StaffAttendance', StaffAttendanceViewSet)
-
+router.register(r'reviews', ReviewViewSet, basename = 'review')
 
 urlpatterns = [
     path('', include(router.urls)),

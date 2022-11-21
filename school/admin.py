@@ -7,7 +7,8 @@ from school.models import (
     Class,
     StudentAttendance,
     StaffAttendance,
-    Transport
+    Transport,
+    Review
 )
 
 
@@ -19,6 +20,6 @@ admin.site.register(staff)
 admin.site.register(Transport)
 admin.site.register(StudentAttendance)
 admin.site.register(StaffAttendance)
-
+admin.site.register(Review)
 
 

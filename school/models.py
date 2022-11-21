@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 GENDER_CHOICES = (
-        ('M', 'male'),
+        ('M', 'Male'),
         ('F', 'Female'),
     )
 
@@ -25,12 +25,18 @@ class Timestamp(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
 
 
+class Review(models.Model):
+    user = models.ForeignKey(User, related_name = 'feedback', on_delete = models.CASCADE, blank = True, null = True)
+    feedback = models.TextField(null = True)
+
+
 class School(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE, blank = True, null = True)
     name = models.CharField(max_length = 200)
     district = models.CharField(max_length = 200)
     code = models.CharField(max_length = 20)
     logo = models.ImageField(default = 'default.jpg', upload_to='school_logos')
+    feedback = models.ForeignKey(Review, on_delete = models.CASCADE, blank = True, null = True)
 
 
 class staff(models.Model):
@@ -68,6 +74,7 @@ class Student(models.Model):
     photo = models.ImageField(default = 'default.jpg', null = True, upload_to = 'student_img')
     gender = models.CharField(max_length = 1, null = True, choices = GENDER_CHOICES)
     DOB = models.DateField(null = True)
+    standard = models.CharField(max_length = 50, null = True)
     student_class = models.ForeignKey(Class, on_delete=models.CASCADE, blank = True, null = True)
     mobile_no = models.IntegerField(null = True, default=2022)
     email_id = models.EmailField(max_length = 254, default = "a@gmail.com", null = True)
@@ -92,3 +99,5 @@ class Transport(models.Model):
     pickup_location = models.CharField(max_length = 50)
     drop_location = models.CharField(max_length = 50)
     fees = models.IntegerField(null = True)
+
+
